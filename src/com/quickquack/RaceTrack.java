@@ -1,18 +1,22 @@
 package com.quickquack;
 
-public enum RaceTrack {
-    INSTANCE;
+public class RaceTrack {
+    private String track;
+    private Player user = new Player();
+    private Player opponent = new Player();
+    private Round round = new Round();
 
-    private static String track;
 
 
-    public static void race(Difficulty difficulty) {
+    public void race() {
     }
 
-    public static void showResults() {
+
+    public boolean roundIsOver() {
+        return round.isOver();
     }
 
-    public static void showHighScore() {
-
+    public void setUserName(String name) {
+        user.setName(name);
     }
 }

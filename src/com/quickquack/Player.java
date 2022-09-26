@@ -1,25 +1,14 @@
 package com.quickquack;
 
-public enum Player implements DuckRacer {
-    INSTANCE;
-    private static String name;
-    private static int wordsPerMinute;
+public class Player {
+    private String name;
 
-    @Override
-    public void move() {
 
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public void type() {
-
-    }
-
-    public static void setName(String name) {
-        Player.name = name;
-    }
-
-    public static String getName() {
+    public String getName() {
         return name;
     }
 }

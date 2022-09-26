@@ -6,13 +6,14 @@ import com.quickquack.app.QuickQuackApp;
 class Main implements SplashApp {
     @Override
     public void start() {
-        QuickQuackApp.initialize();
+        QuickQuackApp quackApp = new QuickQuackApp();
+        quackApp.initialize();
     }
 
     public static void main(String[] args) {
         Main app = new Main();
-       // app.welcome();
-        //app.start();
-        QuickQuackApp.initialize();
+        // app.welcome();
+        // app.start();
+
     }
 }
