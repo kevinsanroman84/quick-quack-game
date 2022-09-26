@@ -16,7 +16,7 @@ public class TrackImageTest {
     @Test
     public void pullText_shouldReturnString_whenTextFileRead() {
         track = new TrackImage();
-        String filePath = track.pullText("asciiart/TestText");
+        String filePath = track.pullText("ascii-art/TestText");
         String duckText = "duck";
         assertEquals(filePath, duckText);
     }
