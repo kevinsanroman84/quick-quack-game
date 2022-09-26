@@ -7,8 +7,8 @@ import com.quickquack.RaceTrack;
 
 import java.util.Scanner;
 
-public enum QuickQuackApp {
-    INSTANCE;
+public enum QuickQuackApp { // public class
+    INSTANCE; // remove
 
     private static Prompter prompter = new Prompter(new Scanner(System.in));
 
