@@ -13,6 +13,16 @@ public class RaceTrackTest {
     }
 
     @Test
+    public void getPlayerImage_shouldReturnDuckImage_whenGivenNumberOfWins() {
+        Player user = new Player();
+        user.setName("Dom");
+        user.setWordsWon(1);
+        assertEquals(track.getUserDuckImages().get(1),track.getPlayerImage(user));
+        assertEquals(track.getOpponentDuckImages().get(0), track.getPlayerImage());
+
+    }
+
+    @Test
     public void readAllImages_shouldPopulateImageList_whenRaceTrackInitialized() {
         for (String image : track.getOpponentDuckImages()) {
             System.out.println(image);
