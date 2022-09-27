@@ -17,14 +17,14 @@ public class RaceTrack {
 
 
     public RaceTrack() {
-        readAll("ascii-art/ai-duck-", opponentDuckImages);
-        readAll("ascii-art/player-duck-", userDuckImages);
+        readAllImages("ascii-art/ai-duck-", opponentDuckImages);
+        readAllImages("ascii-art/player-duck-", userDuckImages);
     }
 
     public void race() {
     }
 
-    public void readAll(String pathPrefix, List<String> list) {
+    public void readAllImages(String pathPrefix, List<String> list) {
         for (int i = 0; i <= 5; i++) {
             try {
                 String image = Files.readString(Path.of(pathPrefix + i + ".txt"));
@@ -33,6 +33,23 @@ public class RaceTrack {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public List<String> getUserDuckImages() {
+        return userDuckImages;
+    }
+
+    public void setUserDuckImages(List<String> userDuckImages) {
+        this.userDuckImages = userDuckImages;
+    }
+
+    public List<String> getOpponentDuckImages() {
+        return opponentDuckImages;
+    }
+
+    public void setOpponentDuckImages(List<String> opponentDuckImages) {
+        this.opponentDuckImages = opponentDuckImages;
     }
 
     public boolean roundIsOver() {
