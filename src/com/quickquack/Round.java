@@ -26,7 +26,7 @@ public class Round {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        pool = words;
+        words = pool;
     }
 
     public boolean isOver() {
