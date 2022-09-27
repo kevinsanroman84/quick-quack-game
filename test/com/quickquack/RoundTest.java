@@ -3,6 +3,11 @@ package com.quickquack;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class RoundTest {
@@ -27,5 +32,48 @@ public class RoundTest {
         System.out.println(round.getHardWordPool());
     }
 
+    @Test
+    public void getWord_shouldReturnEasyWord_whenDifficultyEasy() {
+        String word = round.getWord();
+        System.out.println(word);
+        try {
+            List<String> easyWords = Files.readAllLines(Path.of("word-list/easy-words.txt"));
+            assertTrue(easyWords.contains(word));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Test
+    public void getWord_shouldReturnMediumWord_whenDifficultyMedium() {
+        round.setDifficulty(Difficulty.MEDIUM);
+        String word = round.getWord();
+        System.out.println(word);
+        try {
+            List<String> mediumWords = Files.readAllLines(Path.of("word-list/medium-words.txt"));
+            assertTrue(mediumWords.contains(word));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void getWord_shouldReturnHardWord_whenDifficultyHard() {
+        round.setDifficulty(Difficulty.HARD);
+        String word = round.getWord();
+        System.out.println(word);
+        try {
+            List<String> hardWords = Files.readAllLines(Path.of("word-list/hard-words.txt"));
+            assertTrue(hardWords.contains(word));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void getWord_shouldRemoveWordFromPoolAfterReturningWord() {
+        String word = round.getWord();
+        System.out.println(word);
+        assertFalse(round.getEasyWordPool().contains(word));
+    }
 }
