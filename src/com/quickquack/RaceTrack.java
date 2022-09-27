@@ -1,10 +1,15 @@
 package com.quickquack;
 
+import com.apps.util.Console;
+import com.apps.util.Prompter;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.quickquack.app.QuickQuackApp.gameLost;
 
 public class RaceTrack {
     private String track;
@@ -20,7 +25,32 @@ public class RaceTrack {
         readAllImages("ascii-art/player-duck-", userDuckImages);
     }
 
-    public void race() {
+    public void race(Player user, Prompter prompter) {
+        Console.clear();
+        System.out.println(getPlayerImage());
+        System.out.println(getPlayerImage(user));
+        String word = round.getWord();
+        System.out.println("Word to type: " + word);
+        prompter.prompt("Enter word: ", word, "Incorrect, try again.");
+        double secsPassed = round.secsToTypeWord();
+        if (secsPassed < round.getSecondsPerWord()) {
+            user.win();
+        }
+        else {
+            opponentWordsWon++;
+        }
+        checkNextStage(user);
+    }
+
+    private void checkNextStage(Player user) {
+        if (user.getWordsWon() >= 5) {
+            round.changeDifficulty();
+            user.setWordsWon(0);
+            opponentWordsWon = 0;
+        }
+        if (opponentWordsWon >= 5) {
+            gameLost = true;
+        }
     }
 
     public void readAllImages(String pathPrefix, List<String> list) {

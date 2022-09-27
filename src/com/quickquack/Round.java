@@ -60,6 +60,18 @@ public class Round {
         }
     }
 
+    public void changeDifficulty() {
+        if (Difficulty.EASY == getDifficulty()) {
+            setDifficulty(Difficulty.MEDIUM);
+        }
+        else if (Difficulty.MEDIUM == getDifficulty()) {
+            setDifficulty(Difficulty.HARD);
+        }
+        else {
+            setOver(true);
+        }
+    }
+
     public boolean isOver() {
         return this.isOver;
     }
@@ -98,5 +110,9 @@ public class Round {
 
     public void setHardWordPool(List<String> hardWordPool) {
         this.hardWordPool = hardWordPool;
+    }
+
+    public double getSecondsPerWord() {
+        return secondsPerWord;
     }
 }

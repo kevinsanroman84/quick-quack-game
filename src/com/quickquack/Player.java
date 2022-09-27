@@ -4,7 +4,9 @@ public class Player {
     private String name;
     private int wordsWon;
 
-
+    public void win() {
+        wordsWon++;
+    }
 
     public int getWordsWon() {
         return wordsWon;
