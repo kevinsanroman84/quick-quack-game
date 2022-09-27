@@ -43,6 +43,10 @@ public class RaceTrack {
     }
 
     private void checkNextStage(Player user) {
+        if (Difficulty.HARD == round.getDifficulty() &&
+        user.getWordsWon() >= 5) {
+            round.setOver(true);
+        }
         if (user.getWordsWon() >= 5) {
             round.changeDifficulty();
             user.setWordsWon(0);

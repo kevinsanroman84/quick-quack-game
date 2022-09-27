@@ -11,6 +11,8 @@ class Main implements SplashApp {
     }
 
     public static void main(String[] args) {
+        QuickQuackApp quackApp = new QuickQuackApp();
+        quackApp.initialize();
         Main app = new Main();
         // app.welcome();
         // app.start();
