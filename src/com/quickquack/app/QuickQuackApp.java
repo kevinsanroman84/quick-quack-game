@@ -7,16 +7,16 @@ import com.quickquack.RaceTrack;
 import java.util.Scanner;
 
 public class QuickQuackApp {
+    public static boolean gameLost = false;
     private Prompter prompter = new Prompter(new Scanner(System.in));
     private RaceTrack raceTrack = new RaceTrack();
     private Player user = new Player();
 
     public void initialize() {
         user.setName(promptForUserName());
-        while (!raceTrack.roundIsOver()) {
+        while (!raceTrack.roundIsOver() | !gameLost) {
             raceTrack.race(user, prompter);
         }
-        rematch();
     }
 
     private String promptForUserName() {

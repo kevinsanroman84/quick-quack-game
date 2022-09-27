@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.quickquack.app.QuickQuackApp.gameLost;
+
 public class RaceTrack {
     private String track;
     private int opponentWordsWon;
@@ -36,6 +38,18 @@ public class RaceTrack {
         }
         else {
             opponentWordsWon++;
+        }
+        checkNextStage(user);
+    }
+
+    private void checkNextStage(Player user) {
+        if (user.getWordsWon() >= 5) {
+            round.changeDifficulty();
+            user.setWordsWon(0);
+            opponentWordsWon = 0;
+        }
+        if (opponentWordsWon >= 5) {
+            gameLost = true;
         }
     }
 
