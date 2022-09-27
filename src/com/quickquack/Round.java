@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Round {
     private  Difficulty difficulty = Difficulty.EASY;
-    private int secondsPerWord = 5;
+    private double secondsPerWord = 5.0;
     private List<String> easyWordPool = new ArrayList<>();
     private List<String> mediumWordPool = new ArrayList<>();
     private List<String> hardWordPool = new ArrayList<>();

@@ -1,5 +1,7 @@
 package com.quickquack;
 
+import com.apps.util.Console;
+import com.apps.util.Prompter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -75,5 +78,13 @@ public class RoundTest {
         String word = round.getWord();
         System.out.println(word);
         assertFalse(round.getEasyWordPool().contains(word));
+    }
+
+    @Test
+    public void secsToTypeWord_shouldReturnAccurateTime_whenTypingDone() {
+        String word = round.getWord();
+        Console.pause(1000L);
+        double secsPassed = round.secsToTypeWord();
+        assertEquals(1.0, secsPassed, .01);
     }
 }
