@@ -30,13 +30,4 @@ public class QuickQuackApp {
         name = prompter.prompt("Please enter your name: ");
         return name;
     }
-
-    private void rematch() {
-        String rematch = prompter.prompt("REMATCH?...\n[YES] [NO]; ", "(?i)YES|NO", "").toUpperCase();
-        if ("YES".equals(rematch)) {
-            this.initialize();
-        }
-    }
-
-
 }

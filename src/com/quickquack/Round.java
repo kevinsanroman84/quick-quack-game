@@ -42,7 +42,7 @@ public class Round {
             word = hardWordPool.remove(random.nextInt(hardWordPool.size()));
         }
         clock.start();
-        return word;
+        return word.trim().toLowerCase();
     }
 
     public double secsToTypeWord() {
