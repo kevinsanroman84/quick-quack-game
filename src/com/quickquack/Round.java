@@ -17,6 +17,7 @@ public class Round {
     private List<String> mediumWordPool = new ArrayList<>();
     private List<String> hardWordPool = new ArrayList<>();
     private boolean isOver = false;
+    private Clock clock;
 
 
 
@@ -29,6 +30,7 @@ public class Round {
     public String getWord() {
         String word = null;
         Random random = new Random();
+        clock = new Clock();
 
         if (Difficulty.EASY == getDifficulty()) {
             word = easyWordPool.remove(random.nextInt(easyWordPool.size()));
@@ -39,8 +41,13 @@ public class Round {
         else {
             word = hardWordPool.remove(random.nextInt(hardWordPool.size()));
         }
-
+        clock.start();
         return word;
+    }
+
+    public double secsToTypeWord() {
+        clock.end();
+        return clock.timePassed();
     }
 
     public void pullWords(String difficulty, List<String> pool) {
