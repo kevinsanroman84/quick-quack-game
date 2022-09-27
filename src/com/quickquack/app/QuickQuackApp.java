@@ -14,8 +14,14 @@ public class QuickQuackApp {
 
     public void initialize() {
         user.setName(promptForUserName());
-        while (!raceTrack.roundIsOver() | !gameLost) {
+        while (!raceTrack.roundIsOver() && !gameLost) {
             raceTrack.race(user, prompter);
+        }
+        if (!gameLost) {
+            System.out.println("You Win, " + user.getName() + "!!!");
+        }
+        else {
+            System.out.println("Defeat...");
         }
     }
 
