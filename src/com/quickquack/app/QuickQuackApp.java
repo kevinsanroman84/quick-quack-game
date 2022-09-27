@@ -19,6 +19,7 @@ public class QuickQuackApp {
         }
         if (!gameLost) {
             System.out.println("You Win, " + user.getName() + "!!!");
+            System.out.println("You typed " + raceTrack.roundWordsPerMinute() + "!!!");
         }
         else {
             System.out.println("Defeat...");

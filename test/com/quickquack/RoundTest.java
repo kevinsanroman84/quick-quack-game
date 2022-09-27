@@ -87,4 +87,16 @@ public class RoundTest {
         double secsPassed = round.secsToTypeWord();
         assertEquals(1.0, secsPassed, .1);
     }
+
+    @Test
+    public void wordsPerMinute_shouldReturnWordsPerMinute() {
+        round.getTypedWordSeconds().add(1.0);
+        round.getTypedWordSeconds().add(1.5);
+        round.getTypedWordSeconds().add(2.5);
+        round.getTypedWordSeconds().add(3.0);
+        round.getTypedWordSeconds().add(1.25);
+        round.getTypedWordSeconds().add(1.75);
+        System.out.println(round.wordsPerMinute());
+        assertEquals(32, round.wordsPerMinute());
+    }
 }
