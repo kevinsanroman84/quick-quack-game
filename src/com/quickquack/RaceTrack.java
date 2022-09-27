@@ -8,8 +8,7 @@ import java.util.List;
 
 public class RaceTrack {
     private String track;
-    private Player user = new Player();
-    private Player opponent = new Player();
+    private int opponentWordsWon;
     private Round round = new Round();
     private List<String> userDuckImages = new ArrayList<>();
     private List<String> opponentDuckImages = new ArrayList<>();
@@ -35,6 +34,22 @@ public class RaceTrack {
         }
     }
 
+    public String getPlayerImage(Player player ){
+        String result = null;
+
+        result = userDuckImages.get(player.getWordsWon());
+
+        return result;
+    }
+
+    public String getPlayerImage(){
+        String result = null;
+
+        result = opponentDuckImages.get(getOpponentWordsWon());
+
+        return result;
+    }
+
 
     public List<String> getUserDuckImages() {
         return userDuckImages;
@@ -56,7 +71,11 @@ public class RaceTrack {
         return round.isOver();
     }
 
-    public void setUserName(String name) {
-        user.setName(name);
+    public int getOpponentWordsWon() {
+        return opponentWordsWon;
+    }
+
+    public void setOpponentWordsWon(int opponentWordsWon) {
+        this.opponentWordsWon = opponentWordsWon;
     }
 }

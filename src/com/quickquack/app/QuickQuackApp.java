@@ -1,6 +1,7 @@
 package com.quickquack.app;
 
 import com.apps.util.Prompter;
+import com.quickquack.Player;
 import com.quickquack.RaceTrack;
 
 import java.util.Scanner;
@@ -8,9 +9,10 @@ import java.util.Scanner;
 public class QuickQuackApp {
     private Prompter prompter = new Prompter(new Scanner(System.in));
     private RaceTrack raceTrack = new RaceTrack();
+    private Player user = new Player();
 
     public void initialize() {
-        raceTrack.setUserName(promptForUserName());
+        user.setName(promptForUserName());
         while (!raceTrack.roundIsOver()) {
             raceTrack.race();
         }
