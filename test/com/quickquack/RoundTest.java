@@ -85,6 +85,6 @@ public class RoundTest {
         String word = round.getWord();
         Console.pause(1000L);
         double secsPassed = round.secsToTypeWord();
-        assertEquals(1.0, secsPassed, .01);
+        assertEquals(1.0, secsPassed, .1);
     }
 }

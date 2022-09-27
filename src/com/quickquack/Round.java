@@ -60,6 +60,7 @@ public class Round {
         }
     }
 
+
     public boolean isOver() {
         return this.isOver;
     }
@@ -98,5 +99,9 @@ public class Round {
 
     public void setHardWordPool(List<String> hardWordPool) {
         this.hardWordPool = hardWordPool;
+    }
+
+    public double getSecondsPerWord() {
+        return secondsPerWord;
     }
 }

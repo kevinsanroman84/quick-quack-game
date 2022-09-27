@@ -14,7 +14,7 @@ public class QuickQuackApp {
     public void initialize() {
         user.setName(promptForUserName());
         while (!raceTrack.roundIsOver()) {
-            raceTrack.race();
+            raceTrack.race(user, prompter);
         }
         rematch();
     }
