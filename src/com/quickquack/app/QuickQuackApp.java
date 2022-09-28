@@ -19,14 +19,22 @@ public class QuickQuackApp {
     private Player user = new Player();
     private List<String> banners = new ArrayList<>();
 
+
     public void initialize() {
         readAllBanners();
         System.out.println(banners.get(0));
         Console.pause(3000);
-        while (user.getName().isEmpty()) {
+        Console.clear();
+        System.out.println(banners.get(6));
+        prompter.prompt("Press enter to continue...\n");
+
+        while ("".equals(user.getName())) {
             user.setName(promptForUserName());
         }
         while (!raceTrack.roundIsOver() && !gameLost) {
+            Console.clear();
+            System.out.println(banners.get(raceTrack.roundGetId()+2));
+            Console.pause(3000);
             raceTrack.race(user, prompter);
         }
         if (!gameLost) {
@@ -44,7 +52,7 @@ public class QuickQuackApp {
 
     private void readAllBanners() {
         String pathPrefix = "ascii-art/banner-";
-        for (int i = 0; i <= 2; i++) {
+        for (int i = 0; i <= 6; i++) {
             try {
                 String image = Files.readString(Path.of(pathPrefix + i + ".txt"));
                 banners.add(image);

@@ -1,0 +1,11 @@
+Quick Quack is a fast-paced typing game.
+
+There are 3 rounds per game:
+easy 
+medium
+hard
+
+Each word correctly typed before 5 seconds will advance your duck towards the finish line. 
+Otherwise, opponent will advance towards the finish line.
+First to cross the finish line advances to the next round. 
+Win all 3 rounds and you win the game. 
