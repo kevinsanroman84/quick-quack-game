@@ -59,11 +59,12 @@ public class RaceTrack {
             Console.pause(1000);
             user.setWordsWon(0);
             setOpponentWordsWon(0);
-        }
-        if(round.getId() == 3 || round.getId() == 2){
-            Console.clear();
-            System.out.println(banners.get(roundGetId()+2));
-            Console.pause(3000);
+
+            if(round.getId() == 3 || round.getId() == 2){
+                Console.clear();
+                System.out.println(banners.get(roundGetId()+2));
+                Console.pause(3000);
+            }
         }
         if (getOpponentWordsWon() >= 5) {
             gameLost = true;
