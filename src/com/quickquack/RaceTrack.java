@@ -27,6 +27,7 @@ public class RaceTrack {
 
     public void race(Player user, Prompter prompter) {
         Console.clear();
+        System.out.println("Round: "+ round.getId() + " Difficulty: " + round.getDifficulty());
         System.out.println(getPlayerImage());
         System.out.println(getPlayerImage(user));
         String word = round.getWord();
