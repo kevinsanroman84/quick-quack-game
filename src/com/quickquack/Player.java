@@ -1,7 +1,7 @@
 package com.quickquack;
 
 public class Player {
-    private String name;
+    private String name = "";
     private int wordsWon;
 
     public void win() {

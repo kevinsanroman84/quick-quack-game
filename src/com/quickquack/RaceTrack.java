@@ -28,11 +28,16 @@ public class RaceTrack {
     public void race(Player user, Prompter prompter) {
         Console.clear();
         System.out.println("Round: "+ round.getId() + " Difficulty: " + round.getDifficulty());
+        System.out.println();
+        System.out.println("Senor Duck");
         System.out.println(getPlayerImage());
+        System.out.println();
+        System.out.println(user.getName()+" Duck");
         System.out.println(getPlayerImage(user));
+        System.out.println();
         String word = round.getWord();
         System.out.println("Word to type: " + word);
-        prompter.prompt("Enter word: ", word, "Incorrect, try again.");
+        prompter.prompt("Enter word: ", word, "\nIncorrect, try again.");
         double secsPassed = round.secsToTypeWord();
         if (secsPassed < round.getSecondsPerWord()) {
             user.win();
@@ -109,5 +114,9 @@ public class RaceTrack {
 
     public int roundWordsPerMinute() {
         return round.wordsPerMinute();
+    }
+
+    public int roundGetId() {
+        return round.getId();
     }
 }

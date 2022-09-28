@@ -52,6 +52,7 @@ public class Round {
         } else {
             setOver(true);
         }
+        id++;
     }
 
     public int getId() {
@@ -113,4 +114,5 @@ public class Round {
     public void setTypedWordSeconds(List<Double> typedWordSeconds) {
         this.typedWordSeconds = typedWordSeconds;
     }
+
 }
