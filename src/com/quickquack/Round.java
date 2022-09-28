@@ -19,28 +19,15 @@ public class Round {
     private boolean isOver = false;
     private Clock clock;
     private List<Double> typedWordSeconds = new ArrayList<>();
+    private int id = 1;
 
-
-    public Round() {
-        pullWords("easy", easyWordPool);
-        pullWords("medium", mediumWordPool);
-        pullWords("hard", hardWordPool);
-    }
 
     public String getWord() {
-        String word = null;
-        Random random = new Random();
+
         clock = new Clock();
 
-        if (Difficulty.EASY == getDifficulty()) {
-            word = easyWordPool.remove(random.nextInt(easyWordPool.size()));
-        } else if (Difficulty.MEDIUM == getDifficulty()) {
-            word = mediumWordPool.remove(random.nextInt(mediumWordPool.size()));
-        } else {
-            word = hardWordPool.remove(random.nextInt(hardWordPool.size()));
-        }
         clock.start();
-        return word.trim().toLowerCase();
+        return getDifficulty().nextWord().trim().toLowerCase();
     }
 
     public double secsToTypeWord() {
@@ -57,16 +44,6 @@ public class Round {
         return result;
     }
 
-    public void pullWords(String difficulty, List<String> pool) {
-        List<String> words = null;
-        try {
-            words = Files.readAllLines(Path.of("word-list/" + difficulty + "-words.txt"));
-            pool.addAll(words);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void changeDifficulty() {
         if (Difficulty.EASY == getDifficulty()) {
             setDifficulty(Difficulty.MEDIUM);
@@ -75,6 +52,14 @@ public class Round {
         } else {
             setOver(true);
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isOver() {
