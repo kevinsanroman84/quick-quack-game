@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.quickquack.app.QuickQuackApp.banners;
 import static com.quickquack.app.QuickQuackApp.gameLost;
 
 public class RaceTrack {
@@ -55,6 +56,9 @@ public class RaceTrack {
         }
         if (user.getWordsWon() >= 5) {
             round.changeDifficulty();
+            Console.clear();
+            System.out.println(banners.get(roundGetId()+2));
+            Console.pause(3000);
             user.setWordsWon(0);
             setOpponentWordsWon(0);
         }

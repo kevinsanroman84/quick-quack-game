@@ -17,7 +17,7 @@ public class QuickQuackApp {
     private Prompter prompter = new Prompter(new Scanner(System.in));
     private RaceTrack raceTrack = new RaceTrack();
     private Player user = new Player();
-    private List<String> banners = new ArrayList<>();
+    public static List<String> banners = new ArrayList<>();
 
 
     public void initialize() {
@@ -31,10 +31,12 @@ public class QuickQuackApp {
         while ("".equals(user.getName())) {
             user.setName(promptForUserName());
         }
+
+        Console.clear();
+        System.out.println(banners.get(raceTrack.roundGetId()+2));
+        Console.pause(3000);
+
         while (!raceTrack.roundIsOver() && !gameLost) {
-            Console.clear();
-            System.out.println(banners.get(raceTrack.roundGetId()+2));
-            Console.pause(3000);
             raceTrack.race(user, prompter);
         }
         if (!gameLost) {
