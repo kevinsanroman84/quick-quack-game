@@ -1,5 +1,6 @@
 package com.quickquack.app;
 
+import com.apps.util.Console;
 import com.apps.util.Prompter;
 import com.quickquack.Player;
 import com.quickquack.RaceTrack;
@@ -21,21 +22,27 @@ public class QuickQuackApp {
     public void initialize() {
         readAllBanners();
         System.out.println(banners.get(0));
+        Console.pause(3000);
         user.setName(promptForUserName());
         while (!raceTrack.roundIsOver() && !gameLost) {
             raceTrack.race(user, prompter);
         }
         if (!gameLost) {
+            Console.clear();
             System.out.println(banners.get(1));
+            System.out.println("You typed " + raceTrack.roundWordsPerMinute() + " WPM!");
+            Console.pause(5000);
         }
         else {
+            Console.clear();
             System.out.println(banners.get(2));
+            Console.pause(5000);
         }
     }
 
     public void readAllBanners() {
-        String pathPrefix = "banner-";
-        for (int i = 0; i <= 5; i++) {
+        String pathPrefix = "ascii-art/banner-";
+        for (int i = 0; i <= 2; i++) {
             try {
                 String image = Files.readString(Path.of(pathPrefix + i + ".txt"));
                 banners.add(image);
