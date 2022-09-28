@@ -23,7 +23,9 @@ public class QuickQuackApp {
         readAllBanners();
         System.out.println(banners.get(0));
         Console.pause(3000);
-        user.setName(promptForUserName());
+        while (user.getName().isEmpty()) {
+            user.setName(promptForUserName());
+        }
         while (!raceTrack.roundIsOver() && !gameLost) {
             raceTrack.race(user, prompter);
         }
