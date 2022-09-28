@@ -17,7 +17,7 @@ enum Difficulty {
     Difficulty(String difficulty){
         try{
             words = Files.readAllLines(Path.of("word-list/"+difficulty+"-words.txt"));
-            System.out.println(words);
+
         }
         catch (IOException e){
             e.printStackTrace();
