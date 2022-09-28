@@ -50,14 +50,14 @@ public class RaceTrack {
         if (user.getWordsWon() >= 5) {
             round.changeDifficulty();
             user.setWordsWon(0);
-            opponentWordsWon = 0;
+            setOpponentWordsWon(0);
         }
-        if (opponentWordsWon >= 5) {
+        if (getOpponentWordsWon() >= 5) {
             gameLost = true;
         }
     }
 
-    public void readAllImages(String pathPrefix, List<String> list) {
+    private void readAllImages(String pathPrefix, List<String> list) {
         for (int i = 0; i <= 5; i++) {
             try {
                 String image = Files.readString(Path.of(pathPrefix + i + ".txt"));
@@ -71,7 +71,7 @@ public class RaceTrack {
     public String getPlayerImage(Player player ){
         String result = null;
 
-        result = userDuckImages.get(player.getWordsWon());
+        result = getUserDuckImages().get(player.getWordsWon());
 
         return result;
     }
@@ -79,7 +79,7 @@ public class RaceTrack {
     public String getPlayerImage(){
         String result = null;
 
-        result = opponentDuckImages.get(getOpponentWordsWon());
+        result = getOpponentDuckImages().get(getOpponentWordsWon());
 
         return result;
     }
@@ -89,17 +89,10 @@ public class RaceTrack {
         return userDuckImages;
     }
 
-    public void setUserDuckImages(List<String> userDuckImages) {
-        this.userDuckImages = userDuckImages;
-    }
-
     public List<String> getOpponentDuckImages() {
         return opponentDuckImages;
     }
 
-    public void setOpponentDuckImages(List<String> opponentDuckImages) {
-        this.opponentDuckImages = opponentDuckImages;
-    }
 
     public boolean roundIsOver() {
         return round.isOver();

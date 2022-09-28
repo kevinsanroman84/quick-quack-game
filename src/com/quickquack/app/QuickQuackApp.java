@@ -40,7 +40,7 @@ public class QuickQuackApp {
         }
     }
 
-    public void readAllBanners() {
+    private void readAllBanners() {
         String pathPrefix = "ascii-art/banner-";
         for (int i = 0; i <= 2; i++) {
             try {
