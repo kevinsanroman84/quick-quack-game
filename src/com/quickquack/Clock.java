@@ -21,7 +21,6 @@ class Clock {
 
         elapsed = Duration.between(start, end);
         secsPassed = elapsed.getSeconds() + (elapsed.getNano() / 1_000_000_000.0);
-
         return secsPassed;
     }
 }

@@ -112,4 +112,8 @@ public class RaceTrack {
     public void setOpponentWordsWon(int opponentWordsWon) {
         this.opponentWordsWon = opponentWordsWon;
     }
+
+    public int roundWordsPerMinute() {
+        return round.wordsPerMinute();
+    }
 }

@@ -11,14 +11,14 @@ import java.util.Locale;
 import java.util.Random;
 
 public class Round {
-    private  Difficulty difficulty = Difficulty.EASY;
+    private Difficulty difficulty = Difficulty.EASY;
     private double secondsPerWord = 5.0;
     private List<String> easyWordPool = new ArrayList<>();
     private List<String> mediumWordPool = new ArrayList<>();
     private List<String> hardWordPool = new ArrayList<>();
     private boolean isOver = false;
     private Clock clock;
-
+    private List<Double> typedWordSeconds = new ArrayList<>();
 
 
     public Round() {
@@ -34,11 +34,9 @@ public class Round {
 
         if (Difficulty.EASY == getDifficulty()) {
             word = easyWordPool.remove(random.nextInt(easyWordPool.size()));
-        }
-        else if (Difficulty.MEDIUM == getDifficulty()) {
+        } else if (Difficulty.MEDIUM == getDifficulty()) {
             word = mediumWordPool.remove(random.nextInt(mediumWordPool.size()));
-        }
-        else {
+        } else {
             word = hardWordPool.remove(random.nextInt(hardWordPool.size()));
         }
         clock.start();
@@ -47,7 +45,16 @@ public class Round {
 
     public double secsToTypeWord() {
         clock.end();
+        typedWordSeconds.add(clock.timePassed());
         return clock.timePassed();
+    }
+
+    public int wordsPerMinute() {
+        int result = 0;
+        result = (int) (typedWordSeconds.size() / typedWordSeconds.stream()
+                        .mapToDouble(Double::doubleValue).sum() * 60.0);
+
+        return result;
     }
 
     public void pullWords(String difficulty, List<String> pool) {
@@ -63,11 +70,9 @@ public class Round {
     public void changeDifficulty() {
         if (Difficulty.EASY == getDifficulty()) {
             setDifficulty(Difficulty.MEDIUM);
-        }
-        else if (Difficulty.MEDIUM == getDifficulty()) {
+        } else if (Difficulty.MEDIUM == getDifficulty()) {
             setDifficulty(Difficulty.HARD);
-        }
-        else {
+        } else {
             setOver(true);
         }
     }
@@ -114,5 +119,13 @@ public class Round {
 
     public double getSecondsPerWord() {
         return secondsPerWord;
+    }
+
+    public List<Double> getTypedWordSeconds() {
+        return typedWordSeconds;
+    }
+
+    public void setTypedWordSeconds(List<Double> typedWordSeconds) {
+        this.typedWordSeconds = typedWordSeconds;
     }
 }
