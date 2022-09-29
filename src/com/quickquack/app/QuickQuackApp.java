@@ -2,6 +2,7 @@ package com.quickquack.app;
 
 import com.apps.util.Console;
 import com.apps.util.Prompter;
+import com.quickquack.DuckRace;
 import com.quickquack.Player;
 import com.quickquack.RaceTrack;
 
@@ -26,12 +27,10 @@ public class QuickQuackApp {
         Console.pause(3000);
         Console.clear();
         System.out.println(banners.get(6));
-        prompter.prompt("Press enter to continue...\n");
-
+        prompter.prompt("Press enter to continue...");
         while ("".equals(user.getName())) {
             user.setName(promptForUserName());
         }
-
         Console.clear();
         System.out.println(banners.get(raceTrack.roundGetId()+2));
         Console.pause(3000);
@@ -50,6 +49,8 @@ public class QuickQuackApp {
             System.out.println(banners.get(2));
             Console.pause(5000);
         }
+        DuckRace raceTrack = new DuckRace();
+        raceTrack.race();
     }
 
     private void readAllBanners() {
@@ -65,8 +66,6 @@ public class QuickQuackApp {
     }
 
     private String promptForUserName() {
-        String name;
-        name = prompter.prompt("Please enter your name: ");
-        return name;
+        return prompter.prompt("Please enter your name: ");
     }
 }

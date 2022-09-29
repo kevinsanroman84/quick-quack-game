@@ -1,7 +1,6 @@
 package com.quickquack;
 
 import com.apps.util.Console;
-import com.apps.util.Prompter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -22,17 +20,17 @@ public class RoundTest {
 
     @Test
     public void pullWords_shouldPopulateEasy_whenListValid() {
-        System.out.println(round.getEasyWordPool());
+        System.out.println(round.getWord());
     }
 
     @Test
     public void pullWords_shouldPopulateMedium_whenListValid() {
-        System.out.println(round.getMediumWordPool());
+        System.out.println(round.getWord());
     }
 
     @Test
     public void pullWords_shouldPopulateHard_whenListValid() {
-        System.out.println(round.getHardWordPool());
+        System.out.println(round.getWord());
     }
 
     @Test
@@ -77,7 +75,7 @@ public class RoundTest {
     public void getWord_shouldRemoveWordFromPoolAfterReturningWord() {
         String word = round.getWord();
         System.out.println(word);
-        assertFalse(round.getEasyWordPool().contains(word));
+        assertFalse(round.getWord().contains(word));
     }
 
     @Test
