@@ -15,9 +15,16 @@ public class DuckRace {
     private static final List<String> playerDucks = loadPlayerDucks();
 
     public void race() {
+        boolean raceAgain = true;
         show(0, 0);
         promptForStart();
-        go();
+        while (raceAgain) {
+            go();
+            String answer = prompter.prompt("Race again?... [y/n] :", "(?i)y|n", "");
+            if ("n".equals(answer.toLowerCase())) {
+                raceAgain = false;
+            }
+        }
     }
 
     private void go() {
@@ -31,7 +38,7 @@ public class DuckRace {
             playerPosition = nextPosition(playerPosition);
 
             show(aiPosition, playerPosition);
-            Console.pause(250);
+            Console.pause(150);
         }
     }
 
@@ -47,10 +54,12 @@ public class DuckRace {
     }
 
     private void show(int aiPosition, int playerPosition) {
-        System.out.println(aiDucks.get(aiPosition));
-        System.out.println("\n\n\n");
-        System.out.println(playerDucks.get(playerPosition));
-        System.out.println("\n\n");
+        StringBuilder builder = new StringBuilder(5192);
+        builder.append(aiDucks.get(aiPosition))
+                .append("\n\n\n")
+                .append(playerDucks.get(playerPosition))
+                .append("\n\n");
+        System.out.println(builder.toString());
     }
 
     private void promptForStart() {
