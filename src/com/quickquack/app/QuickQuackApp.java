@@ -49,8 +49,8 @@ public class QuickQuackApp {
             System.out.println(banners.get(2));
             Console.pause(5000);
         }
-        DuckRace raceTrack = new DuckRace();
-        raceTrack.race();
+        DuckRace duckRace = new DuckRace();
+        duckRace.race();
     }
 
     private void readAllBanners() {
